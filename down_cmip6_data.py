@@ -5,8 +5,16 @@ import pandas as pd
 import requests
 from tqdm import tqdm
 from pathlib import Path 
-
 from dict_models_cmip6_amon import CMIP6_dcpp_param_amon #dicionario modelos diarios
+import argparse
+
+
+parser = argparse.ArgumentParser(description='')
+parser.add_argument('--subexp_year', type=int,
+                    help='Sub Exp Year')
+
+args = parser.parse_args()
+subexp_year = args.subexp_year
 
 def set_param_dcpp(expe,subexp):
     #latest = True,
@@ -14,7 +22,7 @@ def set_param_dcpp(expe,subexp):
     source= CMIP6_dcpp_param_amon[model][0]
     experiment=expe # dcppA-hindcast', #, 
     sub_experiment=f's{subexp}'
-    variable= 'pr, tas'
+    variable= 'pr'#, tas'
     table= 'Amon'
     #member_id= CMIP6_param_day[model][1],
     node= CMIP6_dcpp_param_amon[model][1]
@@ -65,6 +73,7 @@ if __name__ == '__main__':
     for model in CMIP6_dcpp_param_amon.keys():
 
         for subexp in range(1973,1974):
+            subexp = subexp_year
             print()     
             print('Experiment ',experiment,'\n', 'Model ', model,'\n', 'SubExperiment ', f's{subexp}')
             '''
@@ -89,9 +98,9 @@ if __name__ == '__main__':
             experiment_id = experiment, #experiment,# dcppA-hindcast', #, 
             sub_experiment_id = sub_experiment,
             variable_id = variable,
-            table_id= 'Amon',
+            table_id= table,
             #member_id= CMIP6_param_day[model][1],
-            data_node= node)
+            data_node = node)
                             
             results = query.search()
             #test if model exists for a given subexperiment.
@@ -117,9 +126,11 @@ if __name__ == '__main__':
             #print(files)
             
             for index, row in files.iterrows():
-                if os.path.isfile(row.filename):
+                #print(f'{experiment}/{model}/{table}/{variable}/{row.filename}')
+                #exit()
+                if os.path.isfile(f'{experiment}/{model}/{table}/{variable}/{row.filename}'):
                     print("File exists. Skipping.")
                 else:
                     download(row.url, row.filename, experiment)
 
-    
+        #exit() 
