@@ -29,7 +29,7 @@ def set_param_dcpp(expe,subexp):
     return proj, source, experiment, sub_experiment, variable, table, node 
 
 def get_param_dcpp(filename):
-    print(filename)
+    #print(filename)
     modelo = filename.split('_')[2] 
     cenario = filename.split('_')[3]
     variavel = filename.split('_')[0]
@@ -120,7 +120,7 @@ if __name__ == '__main__':
                                         results[i].file_context().search())))
 
             files = pd.DataFrame.from_dict(files)
-            print(files['filename'].iloc[0])
+            #print(files['filename'].iloc[0])
             #discard = ["_210101-"]
             #files=files[~files.filename.str.contains('|'.join(discard))]
             #print(files)
