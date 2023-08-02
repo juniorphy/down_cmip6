@@ -17,7 +17,6 @@ args = parser.parse_args()
 subexp_year = args.subexp_year
 
 def set_param_dcpp(expe,subexp):
-    #latest = True,
     proj= 'CMIP6' 
     source= CMIP6_dcpp_param_amon[model][0]
     experiment=expe # dcppA-hindcast', #, 
@@ -29,32 +28,33 @@ def set_param_dcpp(expe,subexp):
     return proj, source, experiment, sub_experiment, variable, table, node 
 
 def get_param_dcpp(filename):
-    #print(filename)
+    print(filename)
     modelo = filename.split('_')[2] 
     cenario = filename.split('_')[3]
     variavel = filename.split('_')[0]
     id = filename.split('_')[4]
     frequency = filename.split('_')[1]
+    subexp = filename.split('_')[4][0:5]
     
-    return modelo, cenario, variavel, id, frequency
+    return modelo, cenario, variavel, id, frequency, subexp
 
 def download(url, filename,experiment):
     print("Downloading ", filename)
-    modelo, cenario, variavel, id, frequency = get_param_dcpp(filename)
+    modelo, cenario, variavel, id, frequency,subexp = get_param_dcpp(filename)
     
     r = requests.get(url, stream=True)
     total_size, block_size = int(r.headers.get('content-length', 0)), 1024
     
     # Check if the request was successful (status code 200 indicates success)
     if r.status_code == 200:
-        filepath = Path(f'{experiment}/{modelo}/{frequency}/{variavel}/{filename}')
+        filepath = Path(f'{experiment}/{modelo}/{frequency}/{variavel}/{subexp}/{filename}')
         filepath.parent.mkdir(parents=True, exist_ok=True) 
         with open(filepath, 'wb') as f:
             for data in tqdm(r.iter_content(block_size),
                             total=total_size//block_size,
                             unit='KiB', unit_scale=True):
                 f.write(data)
-        print('File downloaded successfully.')
+        print(f'File {filename} downloaded successfully.')
     else:
         print('Failed to download the file.')
     # if total_size != 0 and os.path.getsize(filepath) != total_size:
@@ -71,10 +71,17 @@ if __name__ == '__main__':
     experiment='dcppA-hindcast' #dcppB-forecast'
 
     for model in CMIP6_dcpp_param_amon.keys():
-
-        for subexp in range(1973,1974):
-            subexp = subexp_year
-            print()     
+        if subexp_year == None:
+            print("---------------------------------------")
+            
+            print("Error!! give a year for subexp_year!! ")
+            
+            print("Usage: python3 down_cmip6_data.py --subexp_year=YYYY")
+            
+            print("---------------------------------------")
+            exit() 
+        for subexp in range(subexp_year,subexp_year+1):
+            print()
             print('Experiment ',experiment,'\n', 'Model ', model,'\n', 'SubExperiment ', f's{subexp}')
             '''
             query = conn.new_context(
@@ -87,12 +94,11 @@ if __name__ == '__main__':
                 member_id= CMIP6_param_day[model][1],
                 data_node= CMIP6_param_day[model][2])
             '''
-            proj, source, experiment, sub_experiment, variable, table, node = set_param_dcpp(experiment,
-                                                                                subexp)
+            proj, source, experiment, sub_experiment, variable, table, node = set_param_dcpp(experiment, subexp_year)
             # print(proj, source, experiment, sub_experiment, variable, table, node)
             
             query = conn.new_context(
-            #latest = True,
+            latest = True,
             project = proj,
             source_id = source,
             experiment_id = experiment, #experiment,# dcppA-hindcast', #, 
@@ -126,9 +132,9 @@ if __name__ == '__main__':
             #print(files)
             
             for index, row in files.iterrows():
-                #print(f'{experiment}/{model}/{table}/{variable}/{row.filename}')
+                #print(f'{experiment}/{model}/{table}/{variable}/{sub_experiment}/{row.filename}')
                 #exit()
-                if os.path.isfile(f'{experiment}/{model}/{table}/{variable}/{row.filename}'):
+                if os.path.isfile(f'{experiment}/{model}/{table}/{variable}/{sub_experiment}/{row.filename}'):
                     print("File exists. Skipping.")
                 else:
                     download(row.url, row.filename, experiment)
