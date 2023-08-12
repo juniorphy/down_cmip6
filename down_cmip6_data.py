@@ -12,9 +12,12 @@ import argparse
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--subexp_year', type=int,
                     help='Sub Exp Year')
+parser.add_argument('--exp', type=str, default='dcppA-hindcast',
+                    help='Experiment of CMIP6')
 
 args = parser.parse_args()
 subexp_year = args.subexp_year
+experiment = args.exp
 
 def set_param_dcpp(expe,subexp):
     proj= 'CMIP6' 
@@ -68,7 +71,7 @@ if __name__ == '__main__':
 
     conn = SearchConnection('https://esgf-node.llnl.gov/esg-search', distrib=True)
     
-    experiment='dcppA-hindcast' #dcppB-forecast'
+    #experiment='dcppB-forecast' #'dcppA-hindcast' #dcppB-forecast'
 
     for model in CMIP6_dcpp_param_amon.keys():
         if subexp_year == None:
@@ -111,6 +114,8 @@ if __name__ == '__main__':
             results = query.search()
             #test if model exists for a given subexperiment.
             if len(results) < 1:
+                print("Error to get files or Doesn't exist file in this subexperiment!")
+                print()
                 continue 
 
             files = list(map(lambda f : {'filename': f.filename, 'url': f.download_url}, results[0].file_context().search()))
@@ -133,7 +138,6 @@ if __name__ == '__main__':
             
             for index, row in files.iterrows():
                 #print(f'{experiment}/{model}/{table}/{variable}/{sub_experiment}/{row.filename}')
-                #exit()
                 if os.path.isfile(f'{experiment}/{model}/{table}/{variable}/{sub_experiment}/{row.filename}'):
                     print("File exists. Skipping.")
                 else:
