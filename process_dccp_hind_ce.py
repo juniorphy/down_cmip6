@@ -34,7 +34,7 @@ if __name__ == '__main__':
     for model in sorted(models):
         fin = f'{wdir}{model}/Amon/pr/'
         
-        for subexp in range(2005,2017):
+        for subexp in range(2017,2022):
             print(model, f's{subexp}')
             files = sorted(glob.glob(f'{fin}s{subexp}/*.nc'))
             for fdirname in files:
