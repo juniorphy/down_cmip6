@@ -62,6 +62,18 @@ CMIP6_param_amom = {
 }
 
 CMIP6_dcpp_param_amon = {
+#'CMCC-CM2-SR5':                                [     'CMCC-CM2-SR5',       'esgf-node2.cmcc.it'], 
+#'CNRM-ESM2-1':                                 [      'CNRM-ESM2-1',          'esg1.umr-cnrm.fr'], 
+#'CanESM5':                                     [          'CanESM5',     'crd-esgf-drc.ec.gc.ca'],
+#'EC-Earth3':                                   [        'EC-Earth3',               'esgf.bsc.es'], 
+#'FGOALS-f3-L':                                 [      'FGOALS-f3-L',       'esgf-data1.llnl.gov'],
+'HadGEM3-GC31-MM':                             [  'HadGEM3-GC31-MM',           'esgf.ceda.ac.uk'],   #'esgf-data1.llnl.gov'],
+'MIROC6':                                      [           'MIROC6',    'esgf-data02.diasjp.net'],
+'MPI-ESM1-2-LR':                               [    'MPI-ESM1-2-LR',               'esgf.dwd.de'],   #'esgf.ceda.ac.uk'],
+}
+
+'''
+CMIP6_dcpp_param_amon = {
 'CMCC-CM2-SR5':                                [     'CMCC-CM2-SR5',        'esgf-node2.cmcc.it'], 
 'CNRM-ESM2-1':                                 [      'CNRM-ESM2-1',          'esg1.umr-cnrm.fr'], # indisponivel
 'CanESM5':                                     [          'CanESM5',       'esgf-data1.llnl.gov'],
@@ -71,3 +83,4 @@ CMIP6_dcpp_param_amon = {
 'MIROC6':                                      [           'MIROC6',    'esgf-data02.diasjp.net'],
 'MPI-ESM1-2-LR':                               [    'MPI-ESM1-2-LR',       'esgf-data1.llnl.gov'],
 }
+'''

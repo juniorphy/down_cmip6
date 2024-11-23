@@ -118,6 +118,7 @@ def ploting(annual_accumulation, model):
 if __name__ == '__main__': 
 
     cdir = "./"
+    #cdir = "/Volumes/Lenovo/dcpp-decadal/"
     #wdir = cdir + 'dcppA-hindcast/'
     wdir = cdir + 'dcppB-forecast/'
 

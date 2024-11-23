@@ -9,7 +9,7 @@ rsync --progress -avzher dcpp${EXP}/* /Volumes/GoogleDrive-106379421171705090873
 
 echo
 echo dccp${EXP} HD backup
-rsync --progress -avzher dcpp${EXP}/*  /Volumes/Lenovo/dcpp-decadal/dcpp${EXP}/.
+#rsync --progress -avzher dcpp${EXP}/*  /Volumes/Lenovo/dcpp-decadal/dcpp${EXP}/.
 
 done
 

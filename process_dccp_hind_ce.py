@@ -13,10 +13,11 @@ def grab_region(fdirname):
     os.makedirs(f'{cudir}/ce', exist_ok=True)
 
     # Specify the lon-lat box coordinates
-    lon_min = -50+360
-    lon_max = -33+360
-    lat_min = -21
-    lat_max = 2
+    lon_min = -60+360
+    lon_max = -20+360
+    lat_min = -25
+    lat_max = 5
+
     # Specity input and output filename
     input_file = fdirname
     output_file = f'{cudir}/ce/{fname}_ce.nc'
@@ -25,7 +26,8 @@ def grab_region(fdirname):
 
 if __name__ == '__main__': 
 
-    cdir = "./"
+    #cdir = "/Volumes/Lenovo/dcpp-decadal/"
+    cdir = './'
     wdir = cdir + 'dcppA-hindcast/'
     #wdir = cdir + 'dcppb-forecast/'
 
@@ -34,7 +36,7 @@ if __name__ == '__main__':
     for model in sorted(models):
         fin = f'{wdir}{model}/Amon/pr/'
         
-        for subexp in range(2017,2022):
+        for subexp in range(2022, 2024):
             print(model, f's{subexp}')
             files = sorted(glob.glob(f'{fin}s{subexp}/*.nc'))
             for fdirname in files:

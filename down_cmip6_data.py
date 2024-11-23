@@ -1,3 +1,5 @@
+__Author__ = 'Gabriela'
+__Credits__ = 'Junior'
 
 from pyesgf.search import SearchConnection
 import os
@@ -24,8 +26,8 @@ def set_param_dcpp(expe,subexp):
     source= CMIP6_dcpp_param_amon[model][0]
     experiment=expe # dcppA-hindcast', #, 
     sub_experiment=f's{subexp}'
-    variable= 'pr'#, tas'
-    table= 'Amon'
+    variable= 'pr' #, 'pr'
+    table='Amon'
     #member_id= CMIP6_param_day[model][1],
     node= CMIP6_dcpp_param_amon[model][1]
     return proj, source, experiment, sub_experiment, variable, table, node 
