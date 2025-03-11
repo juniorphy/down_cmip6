@@ -22,7 +22,7 @@ CMIP6_param_amon = {
 'IPSL-CM6A-LR':                                [    'IPSL-CM6A-LR',   'r1i1p1f1',      'esgf-data04.diasjp.net'], # gr
 'MIROC6':                                      [          'MIROC6',   'r1i1p1f1',      'esgf-data02.diasjp.net'], # gn
 'MPI-ESM1-2-HR':                               [   'MPI-ESM1-2-HR',   'r1i1p1f1',      'esgf-data04.diasjp.net'], # gn
-'MPI-ESM1-2-LR':                               [   'MPI-ESM1-2-LR',   'r1i1p1f1',      'esgf-data04.diasjp.net'], # gn
+'MPI-ESM1-2-LR':                               [   'MPI-ESM1-2-LR',   'r1i1p1f1',               'esgf3.dkrz.de'], # gn
 'MRI-ESM2-0':                                  [      'MRI-ESM2-0',   'r1i1p1f1',      'esgf-data03.diasjp.net'], # gn
 'NESM3':                                       [           'NESM3',   'r1i1p1f1',      'esgf-data04.diasjp.net'], # gn
 
@@ -34,7 +34,7 @@ CMIP6_param_amon = {
 'MIROC-ES2L':                                  [      'MIROC-ES2L',   'r1i1p1f2',      'esgf-data02.diasjp.net'], # gn
 'UKESM1-0-LL':                                 [     'UKESM1-0-LL',   'r1i1p1f2',             'esgf.ceda.ac.uk'], # gn
 
-'HadGEM3-GC31-LL':                             [ 'HadGEM3-GC31-LL',   'r1i1p1f3',             'esgf.ceda.ac.uk'], # gn 
+'HadGEM3-GC31-LL':                             [ 'HadGEM3-GC31-LL',   'r1i1p1f3',             'esgf.ceda.ac.uk'], # gn
 }
 
 CMIP6_param_daily = {
@@ -42,10 +42,10 @@ CMIP6_param_daily = {
 'ACCESS-ESM1-5':                               [   'ACCESS-ESM1-5',   'r1i1p1f1',             'esgf.nci.org.au'], # gn
 'CMCC-ESM2':                                   [       'CMCC-ESM2',   'r1i1p1f1',      'esgf-data04.diasjp.net'], # gn
 'CanESM5':                                     [         'CanESM5',   'r1i1p1f1',       'crd-esgf-drc.ec.gc.ca'], # gn
-'EC-Earth3':                                   [       'EC-Earth3',   'r1i1p1f1',          'esg-dn1.nsc.liu.se'], # gr
+'EC-Earth3':                                   [       'EC-Earth3',   'r1i1p1f1',         'esg-dn2.nsc.liu.se '],#'esg-dn1.nsc.liu.se'], # gr
 'EC-Earth3-CC':                                [    'EC-Earth3-CC',   'r1i1p1f1',                 'esgf.bsc.es'], # gr
 'EC-Earth3-Veg-LR':                            ['EC-Earth3-Veg-LR',   'r1i1p1f1',          'esg-dn1.nsc.liu.se'], # gr
-'FGOALS-g3':                                   [       'FGOALS-g3',   'r1i1p1f1',         'esgf-data1.llnl.gov'], # gn
+'FGOALS-g3':                                   [       'FGOALS-g3',   'r1i1p1f1',         'esg.lasg.ac.cn'],# 'esgf-data1.llnl.gov'], # gn
 'GFDL-CM4':                                    [        'GFDL-CM4',   'r1i1p1f1',       'esgdata.gfdl.noaa.gov'], # gr1 & gr2
 'GFDL-ESM4':                                   [       'GFDL-ESM4',   'r1i1p1f1',       'esgdata.gfdl.noaa.gov'], # gr1
 'INM-CM4-8':                                   [       'INM-CM4-8',   'r1i1p1f1',         'esgf-data1.llnl.gov'], # gr1
@@ -67,6 +67,8 @@ CMIP6_param_daily = {
 'MIROC-ES2L':                                  [      'MIROC-ES2L',   'r1i1p1f2',      'esgf-data02.diasjp.net'], # gn
 'UKESM1-0-LL':                                 [     'UKESM1-0-LL',   'r1i1p1f2',             'esgf.ceda.ac.uk'], # gn
 
-'HadGEM3-GC31-LL':                             [ 'HadGEM3-GC31-LL',   'r1i1p1f3',             'esgf.ceda.ac.uk'], # gn 
+'HadGEM3-GC31-LL':                             [ 'HadGEM3-GC31-LL',   'r1i1p1f3',             'esgf.ceda.ac.uk'], # gn
 }
+
+
 
